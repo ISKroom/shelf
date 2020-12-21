@@ -1,0 +1,26 @@
+# PHPの mod_rewrite.c と呼ばれるモジュールがサーバーで使用可能かチェック（基本的に使用可能）
+<IfModule mod_rewrite.c>
+
+# Multiviews を無効化（-で無効化）（URLから似たようなファイルを適当にマッピングするのを防ぐ）
+  Options -Multiviews
+
+# 以下に続く ReWriteEngineを有効化する
+  RewriteEngine On
+
+# ルートURLを定義
+  RewriteBase /traversymvc/public
+
+# リクエストされてるものが「ディレクトリ」で、それがpublicフォルダ内に存在する場合はそのディレクトリを返す
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+# リクエストされてるものが「ファイル」で、それがpublicフォルダ内に存在する場合はそのファイルを返す
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+# リクエストされてるものがpublicフォルダ内に存在しない場合
+# 全てのリクエストは「/index.php」として扱う。
+# ?url=$1 でパラメータを渡してる（$1はプレースホルダー）
+# /index.php?url=post となるはずのURLを index.php/post で扱える
+# [L] → 条件にマッチした場合そこで判定を終了する(以下に続くRewriteRuleを評価しない)
+  RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>
