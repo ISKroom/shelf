@@ -5,8 +5,14 @@
     }
 
     public function index(){
+
+      if (isLoggedIn()) {
+        redirect('posts');
+      }
+
       $data = [
-        'title'=>'TraversyMVC',
+        'title'=>'SharePosts',
+        'description' => 'Simple social network built on the TraversyMVC PHP framework'
       ];
 
       // class Controller を継承してるから view() を呼べる
@@ -14,7 +20,10 @@
     }
 
     public function about(){
-      $data = ['title'=>'About'];
+      $data = [
+        'title'=>'About',
+        'description' => 'App to share posts with other users.'
+      ];
       $this->view('pages/about', $data);
     }
   }

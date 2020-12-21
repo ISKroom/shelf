@@ -1,5 +1,4 @@
 <?php
-
   /**
    * PDO Database Class
    * Connect to database
@@ -8,7 +7,6 @@
    * Return rows and results
    */
   class Database {
-
     private $host = DB_HOST;
     private $user = DB_USER;
     private $pass = DB_PASS;
@@ -29,7 +27,6 @@
       // Create PDO instance
       try {
         $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-
       } catch (PDOException $e) {
         $this->error = $e->getMessage();
         echo $this->error;
@@ -45,7 +42,7 @@
     // Bind values
     public function bind($param, $value, $type = null){
       if (is_null($type)) { // バインドする値の型を決定する
-        switch ($type) {
+        switch (true) {
           case is_int($value):
             $type = PDO::PARAM_INT;
             break;

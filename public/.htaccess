@@ -8,7 +8,7 @@
   RewriteEngine On
 
 # ルートURLを定義
-  RewriteBase /traversymvc/public
+  RewriteBase /shareposts/public
 
 # リクエストされてるものが「ディレクトリ」で、それがpublicフォルダ内に存在する場合はそのディレクトリを返す
   RewriteCond %{REQUEST_FILENAME} !-d

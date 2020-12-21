@@ -4,11 +4,20 @@
 // 追加で public\.htaccess の ルートURLも変更するように気をつける
 // ☆☆☆
 
+// ☆☆☆
+// session_helper.php の以下も変更しました（フォーム再送信の確認の回避のため）
+// session_start();
+// header('Expires:-1');
+// header('Cache-Control:');
+// header('Pragma:');
+// ☆☆☆
+
+
   // DB Params
   define('DB_HOST', 'localhost');
-  define('DB_USER', '_YOUR_USER');
-  define('DB_PASS', '_YOUR_PASS');
-  define('DB_NAME', '_YOUR_DBNAME_');
+  define('DB_USER', 'root');
+  define('DB_PASS', '');
+  define('DB_NAME', 'SharePosts');
 
   // App Root
   // __FILE__ → config.phpのファイルパス
@@ -17,9 +26,12 @@
   define('APPROOT',dirname(dirname(__FILE__)));
 
   // URL ROOT
-  define('URLROOT', '_YOUR_URL_');
+  define('URLROOT', 'http://localhost/shareposts');
 
   // Site Name
-  define('SITENAME', '_YOUR_SITENAME_');
+  define('SITENAME', 'SharePosts');
+
+  // App version
+  define('APPVERSION', '1.0.0');
 
 ?>
